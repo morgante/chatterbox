@@ -17,21 +17,22 @@ box = Chatterbox()
 def index():
     return render_template("index.html")
 
-@app.route("/inbox/<key>")
-def inbox(key):
-    session = box.authenticate(key)
+@app.route("/inbox/<username>/<key>")
+def inbox(username, key):
+    session = box.authenticate(username, key)
 
     if session:
-        return "Welcome back"
+        return "Welcome back, {username}".format(username=username)
     else:
         return redirect(url_for("index"))
 
 @app.route("/join", methods=["POST"])
 def join():
-    registration = box.register_user(request.form['name'])
+    username = request.form['name']
+    registration = box.register_user(username)
 
     if registration:
-        return redirect(url_for("inbox", key=registration))
+        return redirect(url_for("inbox", username=username, key=registration))
     else:
         return "Sorry, that username already exists."
 
