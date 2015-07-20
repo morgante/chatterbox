@@ -50,11 +50,11 @@ def receive(socket):
     def handle(message):
         socket.send(message)
 
-    box.open_inbox(auth.get("username"), auth.get("key"), handle)
+    sender = box.open_inbox(auth.get("username"), auth.get("key"), handle)
 
     while True:
         message = socket.receive()
-        box.send_message(message)
+        sender(message)
         gevent.sleep(0)
 
 if __name__ == "__main__":

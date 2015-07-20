@@ -8,6 +8,7 @@ class Chatterbox(object):
         self.redis = redis.from_url(redis_uri)
 
     def __hash_username(self, name):
+        # need to add a secret in here, maybe user json web token
         return hashlib.sha256(name).hexdigest()
 
     def __get_redis_list(self, name):
@@ -27,8 +28,9 @@ class Chatterbox(object):
 
     def open_inbox(self, username, key, handler):
         if self.__hash_username(username) == key:
-            def send(message):
-                print "send", username, message
+            def send(data):
+                info = json.loads(data)
+                self.send_message(username, info.get("to"), info.get("contents"))
 
             for message in self.__grab_recent(username):
                 handler(message)
@@ -37,13 +39,11 @@ class Chatterbox(object):
         else:
             return False
 
-    # def send_message(self, key, data):
-    #     print key, data
-    #     info = json.loads(data)
-    #     user = info.get("to")
-    #     message = info.get("contents")
+    def send_message(self, sender, destination, contents):
+        data = json.dumps({
+            "from": sender,
+            "to": destination,
+            "contents": contents
+        })
 
-    #     key = self.__hash_username(user)
-
-    #     self.redis.lpush("chatbox_inbox_" + key, message)
-    #     print info, "chatbox_inbox_" + key
+        self.redis.lpush(self.__get_redis_list(destination), data)
