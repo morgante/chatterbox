@@ -14,6 +14,9 @@ class Chatterbox(object):
     def __get_redis_list(self, name):
         return "chatbox_inbox_" + self.__hash_username(name)
 
+    def __get_redis_channel(self, name):
+        return "chatbox_channel_" + self.__hash_username(name)
+
     def register_user(self, name):
         return self.__hash_username(name)
 
@@ -32,8 +35,17 @@ class Chatterbox(object):
                 info = json.loads(data)
                 self.send_message(username, info.get("to"), info.get("contents"))
 
+            def receiver(data):
+                handler(data.get("data"))
+
             for message in self.__grab_recent(username):
                 handler(message)
+
+            pubsub = self.redis.pubsub()
+            pubsub.subscribe(**{
+                "" + self.__get_redis_channel(username): receiver
+            })
+            pubsub.run_in_thread(sleep_time=0.001)
 
             return send
         else:
@@ -47,3 +59,4 @@ class Chatterbox(object):
         })
 
         self.redis.lpush(self.__get_redis_list(destination), data)
+        self.redis.publish(self.__get_redis_channel(destination), data)
