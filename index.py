@@ -42,7 +42,7 @@ def join():
         return "Sorry, that username already exists."
 
 # Websocket routes
-@sockets.route('/ws/receive')
+@sockets.route('/ws/inbox')
 def receive(socket):
     auth = socket.receive()
     auth = json.loads(auth)
