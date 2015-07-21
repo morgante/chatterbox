@@ -11,9 +11,9 @@ import * as ChatActions from '../actions/ChatActions';
 export default class ChatterApp extends Component {
 	render() {
 		const { inbox, dispatch } = this.props;
+		const actions = bindActionCreators(ChatActions, dispatch);
 		return (
-			<Chatterbox inbox={inbox}
-			{...bindActionCreators(ChatActions, dispatch)} />
-			);
+			<Chatterbox inbox={inbox} actions={actions} />
+		);
 	}
 }

@@ -1,33 +1,8 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER, INCREMENT_DOUBLE } from '../constants/ActionTypes';
+import * as Actions from '../constants/ActionTypes';
 
-export function increment() {
+export function addFriend(name) {
 	return {
-		type: INCREMENT_DOUBLE
-	};
-}
-
-export function decrement() {
-	return {
-		type: DECREMENT_COUNTER
-	};
-}
-
-export function incrementIfOdd() {
-	return (dispatch, getState) => {
-		const { counter } = getState();
-
-		if (counter % 2 === 0) {
-			return;
-		}
-
-		dispatch(increment());
-	};
-}
-
-export function incrementAsync() {
-	return dispatch => {
-		setTimeout(() => {
-			dispatch(increment());
-		}, 1000);
+		type: Actions.ADD_FRIEND,
+		username: name
 	};
 }

@@ -1,17 +1,22 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+
+import AddFriend from './AddFriend';
 
 export default class Chatterbox extends Component {
 	static propTypes = {
-		inbox: PropTypes.object.isRequired
+		inbox: PropTypes.object.isRequired,
+		actions: PropTypes.object.isRequired
 	};
 
 	render() {
-		const { inbox } = this.props;
+		const { inbox, actions } = this.props;
 
-		console.log("inbox is", inbox);
 		return (
 			<p>
 			inbox
+
+				<AddFriend actions={actions} />
 			</p>
 		);
 	}
