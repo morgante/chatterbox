@@ -18,6 +18,8 @@ export default class Chatterbox extends Component {
 		const actions = this.props.actions;
 		const inbox = this.props.inbox.toJS();
 
+		console.log("state", inbox);
+
 		return (
 			<p>
 				<WelcomeBar inbox={inbox} />
