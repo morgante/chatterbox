@@ -15,7 +15,8 @@ export default class Chatterbox extends Component {
 
 		return (
 			<p>
-				<FriendList actions={actions} friends={inbox.friends} />
+				CHATTERBOX
+				// <FriendList actions={actions} friends={inbox.friends} />
 			</p>
 		);
 	}
