@@ -27,7 +27,7 @@ def inbox(username, key):
     session = box.authenticate(username, key)
 
     if session:
-        return render_template("chat.html")
+        return render_template("chat.html", username=username, key=key)
     else:
         return redirect(url_for("index"))
 

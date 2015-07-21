@@ -1,5 +1,8 @@
-function bob() {
-	console.log("bob is here to stay");
-}
+var React = require('react');
 
-bob();
+var App = require("./components/app");
+
+React.render(
+  <App />,
+  document.getElementById('app')
+);
