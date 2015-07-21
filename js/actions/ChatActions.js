@@ -6,3 +6,16 @@ export function addFriend(name) {
 		username: name
 	};
 }
+
+export function connectServer() {
+	return dispatch => {
+		var route = window.location.pathname.match(/inbox\/(\w+)\/(\w+)/);
+		var username = route[1];
+		var key = route[2];
+
+		dispatch({
+			type: Actions.SET_USERNAME,
+			username: username
+		});
+	};
+}
