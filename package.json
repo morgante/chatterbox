@@ -1,0 +1,29 @@
+{
+  "name": "chatterbox",
+  "version": "0.1.0",
+  "description": "a very simple chat service",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/morgante/chatterbox.git"
+  },
+  "keywords": [
+    "chatterbox"
+  ],
+  "author": "Morgante Pell",
+  "private": true,
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-uglify": "^1.2.0",
+    "browserify": "^10.2.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-sass": "^2.0.1",
+    "reactify": "^1.1.1",
+    "react": "^0.13.3",
+    "express": "^4.12.3",
+    "marked": "^0.3.3",
+    "body-parser": "^1.12.4"
+  }
+}
