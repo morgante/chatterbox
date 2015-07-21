@@ -5,6 +5,8 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
+var babelify = require("babelify");
+var reactify = require("reactify");
 
 process.on("uncaughtException", function(err) {
 	process.stderr.write("UNCAUGHT EXCEPTION:\n\n" + require("util").inspect(err) + "\n\n");
@@ -19,8 +21,14 @@ gulp.task('scripts:compile', function() {
 		entries: './js/index.js',
 		debug: true,
 		// defining transforms here will avoid crashing your stream
-		transform: ["reactify"]
+		transform: []
 	});
+
+	b = b.transform(babelify.configure({
+		stage: 0
+	}));
+
+	b = b.transform("reactify");
 
 	return b.bundle()
 		.pipe(source('app.js'))

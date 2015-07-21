@@ -1,8 +1,7 @@
-var React = require('react');
-
-var App = require("./components/app");
+import React from 'react';
+import App from './containers/App';
 
 React.render(
-  <App />,
-  document.getElementById('app')
+	<App />,
+	document.getElementById('app')
 );
