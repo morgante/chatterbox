@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 
-import AddFriend from './AddFriend';
+import FriendList from './FriendList';
 
 export default class Chatterbox extends Component {
 	static propTypes = {
@@ -10,13 +10,12 @@ export default class Chatterbox extends Component {
 	};
 
 	render() {
-		const { inbox, actions } = this.props;
+		const actions = this.props.actions;
+		const inbox = this.props.inbox.toJS();
 
 		return (
 			<p>
-			inbox
-
-				<AddFriend actions={actions} />
+				<FriendList actions={actions} friends={inbox.friends} />
 			</p>
 		);
 	}
