@@ -15,19 +15,21 @@ export default class FriendList extends Component {
 
 		let sortedFriends = _.sortBy(friends, friend => friend.username);
 
-		let friendList = _.map(sortedFriends, friend => {
+		const friendList = _.map(sortedFriends, friend => {
 			return (
 				<Friend key={friend.username} friend={friend} actions={actions} />
 			);
 		});
 
 		return (
-			<div>
-				Friend List
+			<div className="mdl-layout__drawer">
+				<span className="mdl-layout-title">Friend List</span>
 
-				{friendList}
-				
-				<AddFriend actions={actions} />
+		        <nav className="mdl-navigation">
+		        	<a className="mdl-navigation__link" href="#">alexis</a>
+		        </nav>
+
+		        {friendList}
 			</div>
 		);
 	}

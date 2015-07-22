@@ -21,13 +21,13 @@ export default class ChatWindow extends Component {
 		});
 
 		return (
-			<div>
+			<main className="mdl-layout__content">
 				FRIEND CHAT With {friend.username}
 
 				{messages}
 
 				<SendMessage onSend={sender} />
-			</div>
+			</main>
 		);
 	}
 }

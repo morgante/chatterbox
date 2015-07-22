@@ -5,9 +5,7 @@ export default class WelcomeBar extends Component {
 		const name = this.props.inbox.username;
 
 		return (
-			<div>
-				Welcome, {name}
-			</div>
+			<div></div>
 		);
 	}
 }

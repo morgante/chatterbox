@@ -32,18 +32,8 @@ export default class Chatterbox extends Component {
 		}
 
 		return (
-			<div>
-				<div>
-					<WelcomeBar inbox={inbox} />
-				</div>
-				<div>
-					<div>
-						<FriendList actions={actions} friends={inbox.friends} />
-					</div>
-					<div>
-						{mainPanel}
-					</div>
-				</div>
+			<div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--overlay-drawer-button">
+				<FriendList actions={actions} friends={inbox.friends} />
 			</div>
 		);
 	}

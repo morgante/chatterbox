@@ -7,9 +7,9 @@ export default class Friend extends Component {
 		const clickHandler = this.props.actions.selectFriend.bind(null, username);
 
 		return (
-			<div onClick={clickHandler}>
+			<a className="mdl-navigation__link" href="#" onClick={clickHandler}>
 				{username}
-			</div>
+			</a>
 		);
 	}
 }
