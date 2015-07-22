@@ -18,7 +18,7 @@ export function sendMessage(name, message) {
 	return {
 		type: Actions.SEND_MESSAGE,
 		username: name,
-		message: message
+		contents: message
 	};
 }
 
@@ -29,8 +29,9 @@ export function connectServer() {
 		var key = route[2];
 
 		dispatch({
-			type: Actions.SET_USERNAME,
-			username: username
+			type: Actions.AUTHENTICATE,
+			username: username,
+			key: key
 		});
 	};
 }

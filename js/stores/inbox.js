@@ -23,8 +23,10 @@ export default function inbox(state = Immutable.fromJS({friends: {}}), action) {
 	switch (action.type) {
 		case Actions.ADD_FRIEND:
 			return addFriend(state, action.username);
-		case Actions.SET_USERNAME:
-			return state.set("username", action.username);
+		case Actions.AUTHENTICATE:
+			state = state.set("username", action.username);
+			state = state.set("key", action.key);
+			return state;
 		case Actions.SELECT_FRIEND:
 			return state.set("active_conversation", action.username);
 		case Actions.SEND_MESSAGE:
@@ -33,7 +35,7 @@ export default function inbox(state = Immutable.fromJS({friends: {}}), action) {
 
 			let keyPath = ["friends", username, "messages"];
 			state = state.setIn(keyPath, state.getIn(keyPath).push({
-				message: action.message,
+				contents: action.contents,
 				from: state.get("username"),
 				to: username
 			}));
