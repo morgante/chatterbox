@@ -22,6 +22,15 @@ export function sendMessage(name, message) {
 	};
 }
 
+export function receiveMessage(message) {
+	return {
+		type: Actions.RECEIVE_MESSAGE,
+		from: message.from,
+		to: message.to,
+		contents: message.contents
+	};
+}
+
 export function connectServer() {
 	return dispatch => {
 		var route = window.location.pathname.match(/inbox\/(\w+)\/(\w+)/);

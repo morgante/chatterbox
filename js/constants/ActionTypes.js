@@ -2,3 +2,4 @@ export const ADD_FRIEND = 'ADD_FRIEND';
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const SELECT_FRIEND = 'SELECT_FRIEND';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
