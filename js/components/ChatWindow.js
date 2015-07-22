@@ -22,7 +22,7 @@ export default class ChatWindow extends Component {
 
 		return (
 			<div>
-				FRIEND CHAT
+				FRIEND CHAT With {friend.username}
 
 				{messages}
 
