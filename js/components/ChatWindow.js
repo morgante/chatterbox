@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 var _ = require("lodash");
 
+import SendMessage from "./SendMessage";
+import FromMessage from "./FromMessage";
+
 export default class ChatWindow extends Component {
 	static propTypes = {
 		friend: PropTypes.object.isRequired
@@ -9,11 +12,21 @@ export default class ChatWindow extends Component {
 	render() {
 		const { friend, actions } = this.props;
 
-		console.log("friend window with", friend);
+		const sender = _.partial(actions.sendMessage, friend.username);
+
+		const messages = friend.messages.map(message => {
+			return (
+				<FromMessage message={message} />
+			);
+		});
 
 		return (
 			<div>
 				FRIEND CHAT
+
+				{messages}
+
+				<SendMessage onSend={sender} />
 			</div>
 		);
 	}

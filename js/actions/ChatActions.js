@@ -8,10 +8,17 @@ export function addFriend(name) {
 }
 
 export function selectFriend(name) {
-	console.log('select friend', name);
 	return {
 		type: Actions.SELECT_FRIEND,
 		username: name
+	};
+}
+
+export function sendMessage(name, message) {
+	return {
+		type: Actions.SEND_MESSAGE,
+		username: name,
+		message: message
 	};
 }
 
