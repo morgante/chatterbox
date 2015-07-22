@@ -32,8 +32,9 @@ class Chatterbox(object):
     def open_inbox(self, username, key, handler):
         if self.__hash_username(username) == key:
             def send(data):
-                info = json.loads(data)
-                self.send_message(username, info.get("to"), info.get("contents"))
+                if (data is not None):
+                    info = json.loads(data)
+                    self.send_message(username, info.get("to"), info.get("contents"))
 
             def receiver(data):
                 handler(data.get("data"))

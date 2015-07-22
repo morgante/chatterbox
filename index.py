@@ -48,11 +48,12 @@ def receive(socket):
     auth = json.loads(auth)
 
     def handle(message):
-        socket.send(message)
+        if not socket.closed:
+            socket.send(message)
 
     sender = box.open_inbox(auth.get("username"), auth.get("key"), handle)
 
-    while True:
+    while not socket.closed:
         message = socket.receive()
         sender(message)
         gevent.sleep(0)
