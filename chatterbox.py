@@ -27,7 +27,7 @@ class Chatterbox(object):
             return False
 
     def __grab_recent(self, username, count=100):
-        return self.redis.lrange(self.__get_redis_list(username), 0, count)
+        return self.redis.lrange(self.__get_redis_list(username), -1 * count, -1)
 
     def open_inbox(self, username, key, handler):
         if self.__hash_username(username) == key:
@@ -59,5 +59,6 @@ class Chatterbox(object):
             "contents": contents
         })
 
-        self.redis.lpush(self.__get_redis_list(destination), data)
+        self.redis.rpush(self.__get_redis_list(destination), data)
+        self.redis.rpush(self.__get_redis_list(sender), data)
         self.redis.publish(self.__get_redis_channel(destination), data)
