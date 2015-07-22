@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 var _ = require("lodash");
 
 import AddFriend from './AddFriend';
+import Friend from './Friend';
 
 export default class FriendList extends Component {
 	static propTypes = {
@@ -16,9 +17,7 @@ export default class FriendList extends Component {
 
 		let friendList = _.map(sortedFriends, friend => {
 			return (
-				<li key={friend.username}>
-					friend {friend.username}
-				</li>
+				<Friend key={friend.username} friend={friend} actions={actions} />
 			);
 		});
 

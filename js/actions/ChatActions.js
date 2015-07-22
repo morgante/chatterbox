@@ -7,6 +7,14 @@ export function addFriend(name) {
 	};
 }
 
+export function selectFriend(name) {
+	console.log('select friend', name);
+	return {
+		type: Actions.SELECT_FRIEND,
+		username: name
+	};
+}
+
 export function connectServer() {
 	return dispatch => {
 		var route = window.location.pathname.match(/inbox\/(\w+)\/(\w+)/);

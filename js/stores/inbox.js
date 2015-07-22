@@ -11,6 +11,8 @@ export default function inbox(state = Immutable.fromJS({friends: {}}), action) {
 			}));
 		case Actions.SET_USERNAME:
 			return state.set("username", action.username);
+		case Actions.SELECT_FRIEND:
+			return state.set("active_conversation", action.username);
 		default:
 			return state;
 	}
