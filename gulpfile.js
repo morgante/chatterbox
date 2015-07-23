@@ -48,9 +48,13 @@ gulp.task('scripts:watch', function () {
  */
 gulp.task('sass:compile', function () {
 	gulp.src('./stylesheets/*.scss')
-		.pipe(sass())
+		.pipe(sass({
+			outputStyle: 'compressed',
+			precision: 8,
+			includePaths: ["./bower_components/bootstrap-sass/assets/stylesheets"]
+		}))
 		.pipe(concat('style.css'))
-		.pipe(gulp.dest('./public/'));
+		.pipe(gulp.dest('./static/'));
 });
 
 gulp.task('sass:watch', function () {
