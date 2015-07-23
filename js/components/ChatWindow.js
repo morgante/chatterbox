@@ -3,6 +3,7 @@ var _ = require("lodash");
 
 import SendMessage from "./SendMessage";
 import FromMessage from "./FromMessage";
+import ContextBar from "./ContextBar";
 
 export default class ChatWindow extends Component {
 	static propTypes = {
@@ -20,9 +21,11 @@ export default class ChatWindow extends Component {
 			);
 		});
 
+		const heading = "ChatterBox with " + friend.username;
+
 		return (
 			<div>
-				FRIEND CHAT With {friend.username}
+				<ContextBar text={heading} />
 
 				{messages}
 

@@ -35,5 +35,10 @@
 }
 
 .main-panel {
-	padding: 20px 40px;
+	padding: 60px 40px 20px 40px;
+	position: relative;
+
+	.contextbar {
+		position: absolute;
+	}
 }
