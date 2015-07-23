@@ -32,15 +32,12 @@ export default class Chatterbox extends Component {
 		}
 
 		return (
-			<div>
-				<div>
-					<WelcomeBar inbox={inbox} />
-				</div>
-				<div>
-					<div>
-						<FriendList actions={actions} friends={inbox.friends} />
+			<div className="container-fluid">
+				<div className="row">
+					<div className="friend-panel side-panel col-sm-2 col-md-3">
+						<FriendList actions={actions} friends={inbox.friends} active={inbox.active_conversation} />
 					</div>
-					<div>
+					<div className="main-panel col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-3">
 						{mainPanel}
 					</div>
 				</div>

@@ -11,13 +11,14 @@ export default class FriendList extends Component {
 	};
 
 	render() {
-		const { friends, actions } = this.props;
+		const { friends, actions, active } = this.props;
 
 		let sortedFriends = _.sortBy(friends, friend => friend.username);
 
 		let friendList = _.map(sortedFriends, friend => {
+			let isActive = friend.username === active;
 			return (
-				<Friend key={friend.username} friend={friend} actions={actions} />
+				<Friend key={friend.username} friend={friend} actions={actions} active={isActive} />
 			);
 		});
 
@@ -25,7 +26,9 @@ export default class FriendList extends Component {
 			<div>
 				Friend List
 
-				{friendList}
+				<ul className="nav">
+					{friendList}
+				</ul>
 				
 				<AddFriend actions={actions} />
 			</div>
