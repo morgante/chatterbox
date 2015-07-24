@@ -44,9 +44,18 @@ gulp.task('scripts:watch', function () {
 });
 
 /**
+ * Copy fonts
+ */
+gulp.task('fonts:move', function() {
+	gulp.src('./bower_components/bootstrap-sass/assets/fonts/**/*')
+		.pipe(gulp.dest('./static/fonts/'));
+
+});
+
+/**
  * Compile Sass
  */
-gulp.task('sass:compile', function () {
+gulp.task('sass:compile', ['fonts:move'], function () {
 	gulp.src('./stylesheets/*.scss')
 		.pipe(sass({
 			outputStyle: 'compressed',
