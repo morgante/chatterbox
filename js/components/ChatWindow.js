@@ -31,7 +31,7 @@ export default class ChatWindow extends Component {
 					{messages}
 				</div>
 
-				<SendMessage onSend={sender} />
+				<SendMessage onSend={sender} username={friend.username} />
 			</div>
 		);
 	}

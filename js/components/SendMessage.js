@@ -26,13 +26,19 @@ export default class SendMessage extends Component {
 		this.setState({ text: this.props.text || ""});
 	}
 
+	componentDidUpdate() {
+		React.findDOMNode(this.refs.messagerInput).focus();
+	}
+
 	render() {
 		return (
 			<div className="messagebar">
 				<div className="input-group">
 					<div className="input-group-addon">+</div>
 					<input
+						ref="messagerInput"
 						className="form-control"
+						data-target={this.props.username}
 						onKeyDown={::this.handleKeyDown}
 						onChange={::this.handleChange}
 						value={this.state.text} />
