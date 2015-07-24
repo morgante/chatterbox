@@ -34,7 +34,7 @@ class Chatterbox(object):
             def send(data):
                 if (data is not None):
                     info = json.loads(data)
-                    self.send_message(username, info.get("to"), info.get("contents"))
+                    self.send_message(username, info.get("to"), info.get("contents"), info.get("id"))
 
             def receiver(data):
                 handler(data.get("data"))
@@ -52,11 +52,12 @@ class Chatterbox(object):
         else:
             return False
 
-    def send_message(self, sender, destination, contents):
+    def send_message(self, sender, destination, contents, uuid):
         data = json.dumps({
             "from": sender,
             "to": destination,
-            "contents": contents
+            "contents": contents,
+            "id": uuid
         })
 
         self.redis.rpush(self.__get_redis_list(destination), data)

@@ -43,7 +43,8 @@ export default function inbox(state = Immutable.fromJS({friends: {}}), action) {
 			state = addMessage(state, username, {
 				contents: action.contents,
 				from: state.get("username"),
-				to: username
+				to: username,
+				id: action.id
 			});
 
 			return state;
@@ -55,7 +56,8 @@ export default function inbox(state = Immutable.fromJS({friends: {}}), action) {
 			state = addMessage(state, friend, {
 				from: action.from,
 				to: action.to,
-				contents: action.contents
+				contents: action.contents,
+				id: action.id
 			});
 
 			return state;
