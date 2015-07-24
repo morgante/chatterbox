@@ -4,6 +4,7 @@ var _ = require("lodash");
 import SendMessage from "./SendMessage";
 import FromMessage from "./FromMessage";
 import ContextBar from "./ContextBar";
+import Messages from "./Messages";
 
 export default class ChatWindow extends Component {
 	static propTypes = {
@@ -15,11 +16,7 @@ export default class ChatWindow extends Component {
 
 		const sender = _.partial(actions.sendMessage, friend.username);
 
-		const messages = friend.messages.map(message => {
-			return (
-				<FromMessage message={message} />
-			);
-		});
+		const messages = friend.messages;
 
 		const heading = "Chat with " + friend.username;
 
@@ -27,9 +24,7 @@ export default class ChatWindow extends Component {
 			<div>
 				<ContextBar text={heading} />
 
-				<div className="messages">
-					{messages}
-				</div>
+				<Messages messages={messages} />
 
 				<SendMessage onSend={sender} username={friend.username} />
 			</div>
