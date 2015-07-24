@@ -19,24 +19,17 @@ export default class Messages extends Component {
 			};
 		});
 
-		messages = _.filter(messages, (message, i) => {
-			if (i < 1) {
-				return true;
-			} else {
-				let previous = messages[i - 1];
+		for (var i = messages.length - 1; i > 0; i--) {
+			let message = messages[i];
+			let previous = messages[i - 1];
 
-				console.log("previous", previous, message);
-
-				if (previous.from === message.from) {
-					previous.messages = previous.messages.concat(message.messages);
-					return false;
-				} else {
-					return true;
-				}
+			if (previous.from === message.from) {
+				previous.messages = previous.messages.concat(message.messages);
+				message.messages = [];
 			}
-		});
+		}
 
-		console.log("messages", messages);
+		messages = messages.filter(message => message.messages.length > 0);
 
 		const messageList = messages.map(message => {
 			return (

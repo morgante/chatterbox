@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react';
 
 export default class FromMessage extends Component {
 	render() {
-		console.log("props", this.props);
-
 		const from = this.props.from;
 		const messages = this.props.messages;
 
