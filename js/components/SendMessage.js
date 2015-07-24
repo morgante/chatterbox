@@ -29,15 +29,13 @@ export default class SendMessage extends Component {
 	render() {
 		return (
 			<div className="messagebar">
-				<div className="form-group">
-					<div className="input-group">
-						<div className="input-group-addon">+</div>
-						<input
-							className="form-control"
-							onKeyDown={::this.handleKeyDown}
-							onChange={::this.handleChange}
-							value={this.state.text} />
-					</div>
+				<div className="input-group">
+					<div className="input-group-addon">+</div>
+					<input
+						className="form-control"
+						onKeyDown={::this.handleKeyDown}
+						onChange={::this.handleChange}
+						value={this.state.text} />
 				</div>
 			</div>
 		);

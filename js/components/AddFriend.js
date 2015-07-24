@@ -28,9 +28,10 @@ export default class AddFriend extends Component {
 
 	render() {
 		return (
-			<div>
-				Add friend
+			<div className="add-friend input-group">
+				<div className="input-group-addon"><span className="glyphicon glyphicon-plus" aria-hidden="true"></span></div>
 				<input
+					className="form-control"
 					onKeyDown={::this.handleKeyDown}
 					onChange={::this.handleChange}
 					value={this.state.text} />
