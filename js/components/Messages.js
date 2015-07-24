@@ -4,6 +4,11 @@ var _ = require("lodash");
 import FromMessage from "./FromMessage";
 
 export default class Messages extends Component {
+	componentDidUpdate() {
+		var node = React.findDOMNode(this.refs.mainDiv);
+		node.scrollTop = node.scrollHeight;
+	}
+
 	render() {
 		const messages = this.props.messages;
 
@@ -14,7 +19,7 @@ export default class Messages extends Component {
 		});
 
 		return (
-			<div className="messages">
+			<div className="messages" ref="mainDiv">
 				{messageList}
 			</div>
 		);
