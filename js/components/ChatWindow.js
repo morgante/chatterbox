@@ -21,7 +21,7 @@ export default class ChatWindow extends Component {
 			);
 		});
 
-		const heading = "ChatterBox with " + friend.username;
+		const heading = "Chat with " + friend.username;
 
 		return (
 			<div>

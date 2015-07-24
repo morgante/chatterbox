@@ -5,11 +5,9 @@ export default class ContextBar extends Component {
 		const text = this.props.text;
 
 		return (
-			<nav className="contextbar navbar navbar-inverse navbar-fixed-top">
-				<div className="container-fluid">
-					<span className="navbar-brand">{ text }</span>
-				</div>
-			</nav>
+			<div className="contextbar">
+				<h4>{ text }</h4>
+			</div>
 		);
 	}
 }

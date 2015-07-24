@@ -37,7 +37,7 @@ export default class Chatterbox extends Component {
 					<div className="friend-panel side-panel col-sm-2 col-md-3">
 						<FriendList actions={actions} friends={inbox.friends} active={inbox.active_conversation} />
 					</div>
-					<div className="main-panel col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-3">
+					<div className="main-panel col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-3">
 						{mainPanel}
 					</div>
 				</div>

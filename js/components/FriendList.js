@@ -24,7 +24,7 @@ export default class FriendList extends Component {
 
 		return (
 			<div>
-				Friend List
+				<h3>ChatterBox Friends</h3>
 
 				<ul className="nav">
 					{friendList}

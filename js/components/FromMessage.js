@@ -9,7 +9,7 @@ export default class FromMessage extends Component {
 		return (
 			<div className="message-box media">
 				<div className="media-left">
-					<img className="media-object" width="64" height="64" src={avatar} />
+					<img className="media-object" width="40" height="40" src={avatar} />
 				</div>
 				<div className="media-body">
 					<h5 className="name">{from}</h5>
