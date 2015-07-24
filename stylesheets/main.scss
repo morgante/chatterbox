@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+html, body {
+	height: 100%;
+}
+
 .side-panel {
 	position: fixed;
 	top: 0;
@@ -34,11 +38,43 @@
 	}
 }
 
+$message-bar-height: 60px;
+$context-bar-height: 60px;
+
 .main-panel {
-	padding: 60px 40px 20px 40px;
-	position: relative;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	padding: 0;
 
 	.contextbar {
 		position: absolute;
+		height: $context-bar-height;
+	}
+
+	.messagebar {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: grey;
+		height: $message-bar-height;
+	}
+
+	.messages {
+		position: absolute;
+		top: $context-bar-height;
+		bottom: $context-bar-height;
+		left: 0;
+		right: 0;
+		overflow: auto;
+		padding: 20px;
+	}
+}
+
+.message-box {
+	.name {
+		margin-top: 0;
 	}
 }

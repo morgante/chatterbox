@@ -28,8 +28,7 @@ export default class SendMessage extends Component {
 
 	render() {
 		return (
-			<div>
-				Send Message
+			<div className="messagebar">
 				<input
 					onKeyDown={::this.handleKeyDown}
 					onChange={::this.handleChange}

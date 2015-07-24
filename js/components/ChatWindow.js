@@ -27,7 +27,9 @@ export default class ChatWindow extends Component {
 			<div>
 				<ContextBar text={heading} />
 
-				{messages}
+				<div className="messages">
+					{messages}
+				</div>
 
 				<SendMessage onSend={sender} />
 			</div>
