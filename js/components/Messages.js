@@ -10,11 +10,37 @@ export default class Messages extends Component {
 	}
 
 	render() {
-		const messages = this.props.messages;
+		var messages = this.props.messages;
+
+		messages = _.map(messages, message => {
+			return {
+				from: message.from,
+				messages: [message]
+			};
+		});
+
+		messages = _.filter(messages, (message, i) => {
+			if (i < 1) {
+				return true;
+			} else {
+				let previous = messages[i - 1];
+
+				console.log("previous", previous, message);
+
+				if (previous.from === message.from) {
+					previous.messages = previous.messages.concat(message.messages);
+					return false;
+				} else {
+					return true;
+				}
+			}
+		});
+
+		console.log("messages", messages);
 
 		const messageList = messages.map(message => {
 			return (
-				<FromMessage message={message} />
+				<FromMessage from={message.from} messages={message.messages} />
 			);
 		});
 

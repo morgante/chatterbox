@@ -2,9 +2,18 @@ import React, { Component, PropTypes } from 'react';
 
 export default class FromMessage extends Component {
 	render() {
-		const {from, contents, to} = this.props.message;
+		console.log("props", this.props);
+
+		const from = this.props.from;
+		const messages = this.props.messages;
 
 		const avatar = "https://github.com/identicons/" + from + ".png";
+
+		const text = messages.map(message => {
+			return (
+				<p>{message.contents}</p>
+			);
+		});
 
 		return (
 			<div className="message-box media">
@@ -13,7 +22,7 @@ export default class FromMessage extends Component {
 				</div>
 				<div className="media-body">
 					<h5 className="name">{from}</h5>
-					<p>{contents}</p>
+					{text}
 				</div>
 			</div>
 		);
