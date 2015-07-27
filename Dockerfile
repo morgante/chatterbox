@@ -1,3 +1,5 @@
 FROM python:2-onbuild
 
-CMD gunicorn index:app -b 0.0.0.0:8000
+EXPOSE 8000
+
+CMD gunicorn index:app -k flask_sockets.worker -b 0.0.0.0:8000

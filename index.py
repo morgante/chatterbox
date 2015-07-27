@@ -10,12 +10,16 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sockets import Sockets
 from chatterbox import Chatterbox
 
+debug = (os.getenv("DEBUG") == "true")
+
+print "debug", debug, os.getenv("DEBUG")
+
 app = Flask(__name__)
-app.debug = False
+app.debug = debug
 
 sockets = Sockets(app)
 
-box = Chatterbox(os.getenv("SECRET"))
+box = Chatterbox(os.getenv("SECRET"), redis_uri=os.getenv("REDIS_PORT_6379_TCP").replace("tcp", "redis"))
 
 # Standard HTTP routes
 @app.route("/")
@@ -34,6 +38,8 @@ def inbox(username, key):
 @app.route("/join", methods=["POST"])
 def join():
     username = request.form['name']
+    print "something", username
+
     registration = box.register_user(username)
 
     if registration:

@@ -24,7 +24,11 @@ class Chatterbox(object):
     def register_user(self, name):
         hashed = self.__hash_username(name)
 
+        print "hash", hashed
+
         addable = self.redis.sadd("chatbox_users", name)
+
+        print "added", addable
 
         if (addable):
             return hashed
