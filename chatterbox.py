@@ -18,7 +18,14 @@ class Chatterbox(object):
         return "chatbox_channel_" + self.__hash_username(name)
 
     def register_user(self, name):
-        return self.__hash_username(name)
+        hashed = self.__hash_username(name)
+
+        addable = self.redis.sadd("chatbox_users", name)
+
+        if (addable):
+            return hashed
+        else:
+            return False
 
     def authenticate(self, username, key):
         if self.__hash_username(username) == key:
