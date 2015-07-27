@@ -2,14 +2,17 @@ import hashlib
 import gevent
 import json
 import redis
+import os
 
 class Chatterbox(object):
-    def __init__(self, redis_uri="redis://localhost:6379"):
+    def __init__(self, secret, redis_uri="redis://localhost:6379"):
+        if secret is None:
+            raise ValueError("Secret required")
         self.redis = redis.from_url(redis_uri)
+        self.secret = secret
 
     def __hash_username(self, name):
-        # need to add a secret in here, maybe user json web token
-        return hashlib.sha256(name).hexdigest()
+        return hashlib.sha256(name + self.secret).hexdigest()
 
     def __get_redis_list(self, name):
         return "chatbox_inbox_" + self.__hash_username(name)

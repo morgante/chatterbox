@@ -15,7 +15,7 @@ app.debug = True
 
 sockets = Sockets(app)
 
-box = Chatterbox()
+box = Chatterbox(os.getenv("SECRET"))
 
 # Standard HTTP routes
 @app.route("/")
