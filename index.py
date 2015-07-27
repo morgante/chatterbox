@@ -11,7 +11,7 @@ from flask_sockets import Sockets
 from chatterbox import Chatterbox
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 
 sockets = Sockets(app)
 
@@ -59,4 +59,4 @@ def receive(socket):
         gevent.sleep(0)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')

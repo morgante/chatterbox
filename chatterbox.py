@@ -8,6 +8,7 @@ class Chatterbox(object):
     def __init__(self, secret, redis_uri="redis://localhost:6379"):
         if secret is None:
             raise ValueError("Secret required")
+        print "secret", secret, redis_uri
         self.redis = redis.from_url(redis_uri)
         self.secret = secret
 
