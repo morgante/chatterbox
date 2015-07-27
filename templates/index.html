@@ -6,12 +6,22 @@
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	</head>
-	<body>
-		<form action="/join" method="post">
-			<label for="name">Name:</label>
-			<input type="text" name="name" id="name" />
-			<input type="submit" value="Join" />
-		</form>
+	<body class="landing">
+		<div class="container">
+			<div class="jumbotron">
+				<form action="/join" method="post">
+					<h1>Join ChatterBox</h1>
+					<div class="form-group">
+						<label for="name">Just choose a username:</label>
+						<input type="text" class="form-control" name="name" id="name" placeholder="username" />
+					</div>
+					<input type="submit" class="btn btn-lg btn-success btn-block" value="Join" />
+				</form>
+				<p>ChatterBox is a ridiculously simple web-based chat service which allows you to chat with friends using just a username.</p>
+			</div>
+		</div>
 	</body>
 </html
