@@ -1,6 +1,4 @@
-FROM python:2-onbuild
-
-EXPOSE 8000
+FROM python:2.7
 
 # verify gpg and sha256: http://nodejs.org/dist/v0.10.30/SHASUMS256.txt.asc
 # gpg: aka "Timothy J Fontaine (Work) <tj.fontaine@joyent.com>"
@@ -19,6 +17,20 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 	&& npm install -g npm@"$NPM_VERSION" \
 	&& npm cache clear
 
+WORKDIR /usr/src/app
+
+# install python deps
+COPY requirements.txt /usr/src/app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# install node deps
+COPY package.json /usr/src/app/
 RUN npm install -d
+
+# Copy source
+COPY . /usr/src/app/
+
+# Compile gulp
+RUN ./node_modules/.bin/gulp compile
 
 CMD gunicorn index:app -k flask_sockets.worker -b 0.0.0.0:8000

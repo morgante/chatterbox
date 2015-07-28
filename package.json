@@ -4,14 +4,11 @@
   "description": "a very simple chat service",
   "repository": {
     "type": "git",
-    "url": "git://github.com/morgante/chatterbox.git",
+    "url": "git://github.com/morgante/chatterbox.git"
   },
   "keywords": [
     "chatterbox"
   ],
-  "scripts": {
-    "postinstall": "echo hello"
-  },
   "author": "Morgante Pell",
   "private": true,
   "dependencies": {
